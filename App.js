@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, Platform, ScrollView,Text, View} from 'react-native';
+import { StyleSheet, SafeAreaView,Image, Platform, ScrollView,Text, View} from 'react-native';
 import PokemonCard from './components/PokemonCard';
 export default function App() {
   const charizardData = {
@@ -34,13 +34,18 @@ export default function App() {
     weaknesses: ["Ground"],
   };
 
-  
+  const ballImg= require('./assets/ball.png')
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View>
-          <Text>Pokemon Card</Text>
+      <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>Pokemon Card</Text>
+          <Image  
+            source={ballImg}
+            style={styles.ball}
+          />
         </View>
+      <ScrollView>
+        
         <PokemonCard {...charizardData}/>
         <PokemonCard {...squirtleData}/>
         <PokemonCard {...bulbasaurData}/>
@@ -58,4 +63,18 @@ const styles = StyleSheet.create({
     
     
   },
+  headerContainer: {
+    marginBottom: 10,
+    alignItems: "center"
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: "bold"
+  },
+  ball: {
+    marginTop: 10,
+    width: '100%',
+    height: 30,
+    resizeMode: "contain"
+  }
 });
